@@ -1,0 +1,41 @@
+pipi = false
+
+game:GetService("RunService").Stepped:Connect(function()
+    if pipi then
+    for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetChildren()) do
+           if v:IsA("BasePart") then
+               v.CanCollide = false
+           end
+       end
+   end
+
+   if game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.T) and pipi then
+        game.StarterGui:SetCore("SendNotification", {    
+            Title = "No Clip is On"; -- the title (ofc)
+            Text = "Anceph"; -- what the text says (ofc)
+            Icon = "rbxassetid://9412848116"; -- the image if u want. 
+            Duration = 2; -- how long the notification should in secounds
+        })
+   end
+end)
+
+plr = game.Players.LocalPlayer
+mouse = plr:GetMouse()
+mouse.KeyDown:connect(function(key)
+if key == "t" then
+    pipi = not pipi
+    for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetChildren()) do
+           if v:IsA("BasePart") then
+               v.CanCollide = true
+           end
+       end
+   end
+    if game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.T) and not pipi then
+   game.StarterGui:SetCore("SendNotification", {
+        Title = "No Clip is Off"; -- the title (ofc)
+        Text = "Anceph"; -- what the text says (ofc)
+        Icon = "rbxassetid://9412848116"; -- the image if u want. 
+        Duration = 2; -- how long the notification should in secounds
+    })
+    end
+end)
